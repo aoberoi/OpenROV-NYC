@@ -14,6 +14,7 @@ app.set('view engine', 'jade');
 /*
  * Middleware
  */
+app.use(express.favicon()); // NOTE: before logger for brevity, add your own favicon
 // Logging
 app.use(express.logger( app.get('env') === 'development' ? 'dev' : 'default' ));
 // Set up req.body
@@ -25,7 +26,6 @@ app.use(express.session()); // NOTE: consider using secure cookie if served over
 // Router
 app.use(app.router);
 // Static files
-app.use(express.favicon());
 app.use(express.static(path.join(__dirname, 'public')));
 // Error handling
 app.configure('development', function(){
