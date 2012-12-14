@@ -1,0 +1,8 @@
+form(method='POST', action='#{action}')
+  dl
+    dt
+      label(for='id') ID:
+    dd
+      input(type='text', name='id', value='#{id}')
+  input(type='submit')
+  input(type='hidden', name='_method', value='#{method}')
