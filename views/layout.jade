@@ -1,8 +1,51 @@
 doctype 5
-html(lang='en')
+//if lt IE 7
+    html.no-js.lt-ie9.lt-ie8.lit-ie7(lang='en')
+//if IE 7
+    html.no-js.lt-ie9.lt-ie8(lang='en')
+//if IE 8
+    html.no-js.lt-ie9(lang='en')
+// [if gt IE 8] <!
+html.no-js(lang='en')
+  // <![endif]
   head
     meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width')
+    link(rel='stylesheet', href='css/normalize.css')
+    link(rel="stylesheet", href='css/main.css')
+    link(rel='stylesheet', href='css/style.css')
+    script(src='js/vendor/modernizr-2.6.2.min.js')
+
   body
+    //- Crappy browsers need to upgrade
+    //if lt IE 8
+      p(class='chromeframe')
+        | You are using an 
+        strong outdated
+        |  browser. Please 
+        a(href='http://browsehappy.com/') upgrade your browser
+        |  or 
+        a(href='http://www.google.com/chromeframe/?redirect=true') activate Google Chrome Frame
+        |  to improve your experience.
+
     block content
+
+    //- jQuery
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
+    script
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')
+
+    //- Custom scripts
+    //- TODO: grunt task to minify and concat these, then replace this with some *.min.js
+    script(src='js/plugins.js')
+    script(src='js/main.js')
+
+    //- Google Analytics: change UA-XXXXX-X to be your site's ID.
+    script
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
