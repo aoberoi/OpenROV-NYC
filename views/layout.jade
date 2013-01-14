@@ -14,9 +14,9 @@ html.no-js(lang='en')
     title= title
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
-    link(rel='stylesheet', href='css/normalize.css')
-    link(rel="stylesheet", href='css/main.css')
-    script(src='js/vendor/modernizr-2.6.2.min.js')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel="stylesheet", href='/css/main.css')
+    script(src='/js/vendor/modernizr-2.6.2.min.js')
 
   body
     //- Crappy browsers need to upgrade
@@ -35,12 +35,12 @@ html.no-js(lang='en')
     //- jQuery
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
     script
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')
+      window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')
 
     //- Custom scripts
     //- TODO: grunt task to minify and concat these, then replace this with some *.min.js
-    script(src='js/plugins.js')
-    script(src='js/main.js')
+    script(src='/js/plugins.js')
+    script(src='/js/main.js')
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
     script
