@@ -14,6 +14,13 @@ var OpenROV = (function() {
     self.socket.on('rovIsOnline', self.rovPresence);
     self.socket.on('connect', self.connected);
     self.socket.on('disconnect', self.disconnected);
+    self.socket.on('videoStarted', function(data) {
+      console.log(config)
+      var address = 'http://' + config.socketHost + ':' + CONFIG.video_port + '/?action=stream';
+        $('#video').attr('src', address);
+      console.log('video enabled');
+    });
+
     self.chooseController();
   };
 
