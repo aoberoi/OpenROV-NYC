@@ -8,6 +8,7 @@ append scripts
     };
   script(src='/js/leap.min.js')
   script(src='/socket.io/socket.io.js')
+  script(src='/js/controller-ui.js')
   script(src='/js/rovctrlr-leap.js')
   script(src='/js/rovctrlr-keyboard.js')
   script(src='/js/main.js')
@@ -17,7 +18,13 @@ block content
 
   .collab
 
-  .ctrl-guide
+  .ctrl-ui.well.well-large
+    img.dim.ctrl-up(src="/img/arrow-up.png")
+    img.dim.ctrl-down(src="/img/arrow-down.png")
+    img.dim.ctrl-left(src="/img/arrow-left.png")
+    img.dim.ctrl-right(src="/img/arrow-right.png")
+    img.dim.ctrl-fwd(src="/img/arrow-fwd.png")
+    img.dim.ctrl-back(src="/img/arrow-back.png")
 
   .ctrl-choose.text-center
     ul.list-inline

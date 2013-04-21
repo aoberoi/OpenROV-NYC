@@ -6,6 +6,7 @@
 
 var LeapController = function(socket) {
   this.socket = socket;
+  this.controllerUi = new ControllerUI();
 }
 
 LeapController.prototype.start = function() {
@@ -81,5 +82,6 @@ LeapController.prototype.sendCommands = function() {
     console.log(this.nextCommands);
   }
   this.socket.emit('control_update', this.nextCommands);
+  this.controllerUi.updateUI(this.nextCommands);
 };
 

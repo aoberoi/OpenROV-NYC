@@ -1,0 +1,32 @@
+extends layout
+
+append scripts
+  script
+    var config = {
+      socketHost: '#{socketHost}',
+      socketPort: '#{socketPort}'
+    };
+  script(src='/js/leap.min.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='/js/rovctrlr-leap.js')
+  script(src='/js/rovctrlr-keyboard.js')
+  script(src='/js/main.js')
+
+block content
+  .rov-cam
+
+  .collab
+
+  .ctrl-ui
+    img.ctrl-up(src="/img/arrow-up.png")
+    img.ctrl-down(src="/img/arrow-down.png")
+    img.ctrl-left(src="/img/arrow-left.png")
+    img.ctrl-right(src="/img/arrow-right.png")
+    img.ctrl-fwd(src="/img/arrow-fwd.png")
+    img.ctrl-back(src="/img/arrow-back.png")
+
+  .ctrl-choose
+    button.leap
+      | Leap Controller
+    button.keyboard
+      | Keyboard Controller

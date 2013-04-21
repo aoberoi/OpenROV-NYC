@@ -6,4 +6,52 @@
   display: none;
 }
 
+.bright {
+  opacity : 1.0;
+}
+
+.dim {
+  opacity: 0.5;
+}
+
+.ctrl-ui {
+  position:relative;
+  width: 400px;
+  height: 400px;
+}
+
+.ctrl-up, .ctrl-down, .ctrl-left, .ctrl-right, .ctrl-fwd, .ctrl-back {
+  position:absolute;
+}
+
+.ctrl-up {
+  top: 0px;
+  left: 166px;
+}
+
+.ctrl-down {
+  /*top: 303px;*/
+  bottom: 0px;
+  left: 166px;
+}
+
+.ctrl-left {
+  top: 165px;
+  left: 0px;
+}
+
+.ctrl-right {
+  top: 165px;
+  right: 0px;
+}
+
+.ctrl-fwd {
+  top: 138px;
+  left: 163px;
+}
+
+.ctrl-back {
+  top: 210px;
+  left: 158px;
+}
 
