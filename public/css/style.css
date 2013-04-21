@@ -56,9 +56,10 @@
 }
 
 img.background {
-  position:abosolute;
+  position:absolute;
   top:0;
   left:0;
    max-width: 100%; /* or any other value */
    height: auto;
+   z-index:-999;
 }
