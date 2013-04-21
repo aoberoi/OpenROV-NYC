@@ -10,8 +10,8 @@ function control(req, res) {
   res.render('control', {
     title: 'OpenROV Remote Control',
     description: '',
-    socketHost: 'localhost',
-    socketPort: '8080'
+    socketHost: process.env.SOCKETIO_HOST || 'localhost',
+    socketPort: process.env.SOCKETIO_PORT || '8080'
   });
 }
 
