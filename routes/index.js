@@ -22,6 +22,12 @@ function mockrov(req, res) {
 module.exports = function(app) {
   app.get('/', index);
 
+  app.get('/meettherobots', function(req, res) {
+    res.render('robot_index', {
+      title: '',
+      description: ''
+    })
+  });
   app.get('/robots', robots);
 
   app.get('/mockrov', mockrov);
