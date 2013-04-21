@@ -36,34 +36,38 @@ var leapController = {
     } else {
       this.nextCommands['lift'] = 0;
     }
-    if (this.nextCommands['lift'] != 0) {
-      console.log(this.nextCommands['lift']);
-    }
+    //if (this.nextCommands['lift'] != 0) {
+    //  console.log(this.nextCommands['lift']);
+    //}
     //console.dir(hand.palmPosition);
   },
 
   detectThrottle : function(hand) {
-    //console.log('palm normal');
-    //console.dir(hand.palmNormal);
-    //if (hand.palmPosition[1] < 150) {
-    //  this.nextCommands['lift'] = -1;
-    //} else if (hand.palmPosition[1] > 300) {
-    //  this.nextCommands['lift'] = 1
-    //} else {
-    //  this.nextCommands['lift'] = 0;
+    if (hand.palmNormal[2] < -0.5) {
+      this.nextCommands['throttle'] = -1;
+    } else if (hand.palmNormal[2] > 0.5) {
+      this.nextCommands['throttle'] = 1
+    } else {
+      this.nextCommands['throttle'] = 0;
+    }
+    //if (this.nextCommands['throttle'] != 0) {
+    //  console.log(this.nextCommands['throttle']);
     //}
+    //console.dir(hand.palmNormal);
   },
 
   detectYaw : function(hand) {
-    //console.log('palm direction');
-    //console.dir(hand.direction);
-    //if (hand.palmPosition[1] < 150) {
-    //  this.nextCommands['lift'] = -1;
-    //} else if (hand.palmPosition[1] > 300) {
-    //  this.nextCommands['lift'] = 1
-    //} else {
-    //  this.nextCommands['lift'] = 0;
+    if (hand.direction[0] < -0.4) {
+      this.nextCommands['yaw'] = -1;
+    } else if (hand.direction[0] > 0.4) {
+      this.nextCommands['yaw'] = 1
+    } else {
+      this.nextCommands['yaw'] = 0;
+    }
+    //if (this.nextCommands['yaw'] != 0) {
+    //  console.log(this.nextCommands['yaw']);
     //}
+    //console.dir(hand.direction);
   },
 
   sendCommands : function() {
@@ -71,6 +75,9 @@ var leapController = {
     // TODO: send over leapController.nextCommands
     //console.log('next controls');
     //console.dir(leapController.nextCommands);
+    if (this.nextCommands['lift'] != 0 || this.nextCommands['throttle'] != 0 || this.nextCommands['yaw'] != 0) {
+      console.log(this.nextCommands);
+    }
   }
 
 };
