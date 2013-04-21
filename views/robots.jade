@@ -15,24 +15,24 @@ append scripts
   script(src='/js/main.js')
 
 block content
-  .rov-cam
-    .vide
+  .row
+    .col-span-6
+      .ctrl-ui.well.well-large
+        img.dim.ctrl-up(src="/img/arrow-up.png")
+        img.dim.ctrl-down(src="/img/arrow-down.png")
+        img.dim.ctrl-left(src="/img/arrow-left.png")
+        img.dim.ctrl-right(src="/img/arrow-right.png")
+        img.dim.ctrl-fwd(src="/img/arrow-fwd.png")
+        img.dim.ctrl-back(src="/img/arrow-back.png")
 
-  .collab
-
-  .ctrl-ui.well.well-large
-    img.dim.ctrl-up(src="/img/arrow-up.png")
-    img.dim.ctrl-down(src="/img/arrow-down.png")
-    img.dim.ctrl-left(src="/img/arrow-left.png")
-    img.dim.ctrl-right(src="/img/arrow-right.png")
-    img.dim.ctrl-fwd(src="/img/arrow-fwd.png")
-    img.dim.ctrl-back(src="/img/arrow-back.png")
-
-  .ctrl-choose.text-center
-    ul.list-inline
-      li
-        button.btn.btn-primary.leap
-          | Leap Controller
-      li
-        button.btn.btn-primary.keyboard
-          | Keyboard Controller
+      .ctrl-choose
+        ul.list-inline
+          li
+            button.btn.btn-primary.leap
+              | Leap Controller
+          li
+            button.btn.btn-primary.keyboard
+              | Keyboard Controller
+    .col-span-6
+      p
+        img(src="/img/shark.jpg")
