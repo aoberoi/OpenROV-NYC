@@ -4,22 +4,38 @@
  * Bootstraps the application
  */
 
-OpenROV.start = function() {
-  // TODO: connect to socket server for controller communications, assign to this.ctrlSocket
-  // TODO: another socket connection for video frame updates. assing to this.vidSocket
+var OpenROV = (function() {
+  var self = {},
+      isRovOnline = false;
 
-  // HACK
-  this.controllerChosen(0);
-};
+  self.start = function() {
+    // connect to socket server for controller communications, assign to this.ctrlSocket
+    self.socket = io.connect('http://' + config.socketHost + ':' + config.socketPort + '/user');
+    self.socket.on('rovIsOnline', self.rovPresence);
+    self.socket.on('connect', self.connected);
+    self.socket.on('disconnect', self.disconnected);
+  };
 
-OpenROV.chooseController = function() {
-  for (var i = 0; i < OpenROV.controllers.length; i++) {
-    // TODO: add buttons to a UI dialog that lets user choose a controller, call controllerChosen with i as param
+  self.rovPresence = function(state) {
+    if (state && !this.isRovOnline) {
+      this.controller.start();
+    } else if (!state && this.isRovOnline) {
+      this.controller.stop();
+    }
+    this.isRovOnline = state;
+  };
+
+  self.connected = function () {
+    if (self.controller) {
+      self.controller.start();
+    }
   }
-};
 
-OpenROV.controllerChosen = function(i) {
-  OpenROV.controllers[i].start(this.ctrlSocket);
-};
+  self.disconnected = function () {
+    if (self.controller) {
+      self.controller.stop();
+    }
+  }
 
-OpenROV.start();
+  return OpenROV;
+)());

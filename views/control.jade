@@ -1,10 +1,13 @@
 extends layout
 
 append scripts
-  script(src='/js/leap.min.js')
   script
-    var OpenROV = {};
-    OpenROV.controllers = [];
+    var config = {
+      socketHost: '#{socketHost}',
+      socketPort: '#{socketPort}'
+    };
+  script(src='/js/leap.min.js')
+  script(src='/socket.io/socket.io.js')
   script(src='/js/rovctrlr-leap.js')
   script(src='/js/rovctrlr-keyboard.js')
   script(src='/js/main.js')

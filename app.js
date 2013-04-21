@@ -1,8 +1,10 @@
 var express = require('express'),
+    io = require('socket.io'),
     http = require('http'),
     path = require('path');
 
 var app = express();
+
 
 /*
  * Settings
@@ -10,6 +12,7 @@ var app = express();
 app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
 
 /*
  * Middleware
@@ -32,19 +35,31 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-/*
- * Router
- */
-var routes = require('./routes')(app);
 
 /*
  * Server
  */
-http.createServer(app).listen(app.get('port'), "127.0.0.1", function(){
+var server = http.createServer(app);
+var socketServer = io.listen(server);
+
+server.listen(app.get('port'), "127.0.0.1", function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+
+/*
+ * Router
+ */
+require('./routes')(app);
+
+
+/*
+ * Socket handling
+ */
+require('./lib/sockets.js')(socketServer);
+
 
 /*
  * External interface
  */
-module.exports = app;
+module.exports = server;
