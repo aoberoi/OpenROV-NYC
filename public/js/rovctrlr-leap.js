@@ -81,6 +81,11 @@ LeapController.prototype.sendCommands = function() {
   if (this.nextCommands['lift'] != 0 || this.nextCommands['throttle'] != 0 || this.nextCommands['yaw'] != 0) {
     console.log(this.nextCommands);
   }
+  this.nextCommands = {
+    "lift" : this.nextCommands['lift'] * 0.5,
+    "throttle" : this.nextCommands['throttle'] * 0.5,
+    "yaw" : this.nextCommands['yaw'] * 0.5
+  }
   this.socket.emit('control_update', this.nextCommands);
   this.controllerUi.updateUI(this.nextCommands);
 };
