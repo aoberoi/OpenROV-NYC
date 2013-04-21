@@ -5,8 +5,8 @@
  */
 
 OpenROV.start = function() {
-  // TODO: connect to socket server for controller communications
-  // TODO: another socket connection for video frame updates
+  // TODO: connect to socket server for controller communications, assign to this.ctrlSocket
+  // TODO: another socket connection for video frame updates. assing to this.vidSocket
 
   // HACK
   this.controllerChosen(0);
@@ -19,7 +19,7 @@ OpenROV.chooseController = function() {
 };
 
 OpenROV.controllerChosen = function(i) {
-  OpenROV.controllers[i].start();
+  OpenROV.controllers[i].start(this.ctrlSocket);
 };
 
 OpenROV.start();
