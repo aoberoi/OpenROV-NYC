@@ -14,6 +14,7 @@ var OpenROV = (function() {
     self.socket.on('rovIsOnline', self.rovPresence);
     self.socket.on('connect', self.connected);
     self.socket.on('disconnect', self.disconnected);
+    self.chooseController();
   };
 
   self.rovPresence = function(state) {
@@ -37,5 +38,23 @@ var OpenROV = (function() {
     }
   }
 
-  return OpenROV;
-)());
+  self.chooseController = function () {
+    $('.ctrl-choose button').click(self.controllerChosen);
+    $('.ctrl-choose').show();
+  }
+
+  self.controllerChosen = function(e) {
+    var $target = $(e.target);
+    if ($target.hasClass('leap')) {
+      self.controller = new LeapController(self.socket);
+    } else if ($target.hasClass('keyboard')) {
+      self.controller = new KeyboardController(self.socket);
+    }
+    $('.ctrl-choose').hide();
+    self.controller.start();
+  }
+
+  return self;
+}());
+
+OpenROV.start();

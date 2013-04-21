@@ -7,6 +7,8 @@ include includes/html
 
     //- Custom styles
     block styles
+      link(rel='stylesheet', href='/css/normalize.css')
+      link(rel='stylesheet', href='/css/style.css')
 
     script(src='http://modernizr.com/downloads/modernizr-latest.js')
 
@@ -18,5 +20,7 @@ include includes/html
 
     //- Custom scripts
     block scripts
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
+      script(src='http://underscorejs.org/underscore-min.js')
 
     include includes/google-analytics

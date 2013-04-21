@@ -4,7 +4,7 @@
  * Implementation for an OpenROV controller on a keyboard
  */
 
-function KeyboradController(socket) {
+function KeyboardController(socket) {
   this.socket = socket;
 }
 

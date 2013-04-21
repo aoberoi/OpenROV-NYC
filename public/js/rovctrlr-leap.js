@@ -10,7 +10,7 @@ var LeapController = function(socket) {
 
 LeapController.prototype.start = function() {
   console.log('leap controller start');
-  Leap.loop({enableGestures: true}, this.runLoop);
+  Leap.loop({enableGestures: true}, _.bind(this.runLoop, this));
 }
 
 LeapController.prototype.stop = function() {
@@ -31,7 +31,7 @@ LeapController.prototype.runLoop = function(frame) {
   }
 }
 
-LeapController.prototype.detectLift : function(hand) {
+LeapController.prototype.detectLift = function(hand) {
   if (hand.palmPosition[1] < 150) {
     this.nextCommands['lift'] = -1;
   } else if (hand.palmPosition[1] > 300) {
@@ -45,7 +45,7 @@ LeapController.prototype.detectLift : function(hand) {
   //console.dir(hand.palmPosition);
 };
 
-LeapController.prototype.detectThrottle : function(hand) {
+LeapController.prototype.detectThrottle = function(hand) {
   if (hand.palmNormal[2] < -0.5) {
     this.nextCommands['throttle'] = -1;
   } else if (hand.palmNormal[2] > 0.5) {
@@ -59,7 +59,7 @@ LeapController.prototype.detectThrottle : function(hand) {
   //console.dir(hand.palmNormal);
 };
 
-LeapController.prototype.detectYaw : function(hand) {
+LeapController.prototype.detectYaw = function(hand) {
   if (hand.direction[0] < -0.4) {
     this.nextCommands['yaw'] = -1;
   } else if (hand.direction[0] > 0.4) {
@@ -73,7 +73,7 @@ LeapController.prototype.detectYaw : function(hand) {
   //console.dir(hand.direction);
 };
 
-LeapController.prototype.sendCommands : function() {
+LeapController.prototype.sendCommands = function() {
   // TODO: understand the interval in which it last sent commands
   //console.log('next controls');
   //console.dir(leapController.nextCommands);
