@@ -55,3 +55,10 @@
   left: 158px;
 }
 
+img.background {
+  position:abosolute;
+  top:0;
+  left:0;
+   max-width: 100%; /* or any other value */
+   height: auto;
+}
