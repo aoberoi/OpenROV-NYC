@@ -17,7 +17,7 @@ LeapController.prototype.start = function() {
     "yaw" : 0,
     "throttle" : 0
   };
-  window.setInterval(this.sendCommands, 1000);
+  window.setInterval(_.bind(this.sendCommands, this), 1000);
 }
 
 LeapController.prototype.stop = function() {
