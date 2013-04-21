@@ -7,7 +7,7 @@ var app = express();
 /*
  * Settings
  */
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
@@ -40,7 +40,7 @@ var routes = require('./routes')(app);
 /*
  * Server
  */
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), "127.0.0.1", function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
