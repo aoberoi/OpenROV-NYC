@@ -41,7 +41,7 @@ app.configure('development', function(){
  * Server
  */
 var server = http.createServer(app);
-//var socketServer = io.listen(server);
+var socketServer = io.listen(server);
 
 server.listen(app.get('port'), "127.0.0.1", function(){
   console.log("Express server listening on port " + app.get('port'));
