@@ -12,6 +12,7 @@ var LeapController = function(socket) {
 LeapController.prototype.start = function() {
   console.log('leap controller start');
   Leap.loop({enableGestures: true}, _.bind(this.runLoop, this));
+  setInterval(this.sendCommands, 1000);
 }
 
 LeapController.prototype.stop = function() {
@@ -27,7 +28,7 @@ LeapController.prototype.runLoop = function(frame) {
       this.detectLift(hand);
       this.detectYaw(hand);
 
-      this.sendCommands();
+      //this.sendCommands();
     }
   }
 }
