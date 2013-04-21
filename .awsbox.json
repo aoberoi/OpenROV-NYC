@@ -2,6 +2,6 @@
   "processes": [ "app.js" ],
   "env" : {
     "SOCKETIO_HOST" : "socketio.tinyseabots.com",
-    "SOCKETIO_PORT" : "5001",
+    "SOCKETIO_PORT" : "5001"
   }
 }
