@@ -10,7 +10,7 @@ var OpenROV = (function() {
 
   self.start = function() {
     // connect to socket server for controller communications, assign to this.ctrlSocket
-    self.socket = io.connect('http://' + config.socketHost + ':' + config.socketPort + '/user');
+    self.socket = io.connect('http://' + config.socketHost + ':' + config.socketPort);
     self.socket.on('rovIsOnline', self.rovPresence);
     self.socket.on('connect', self.connected);
     self.socket.on('disconnect', self.disconnected);
