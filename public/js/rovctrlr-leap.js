@@ -12,6 +12,11 @@ var LeapController = function(socket) {
 LeapController.prototype.start = function() {
   console.log('leap controller start');
   Leap.loop({enableGestures: true}, _.bind(this.runLoop, this));
+  this.nextCommands = {
+    "lift" : 0,
+    "yaw" : 0,
+    "throttle" : 0
+  };
   window.setInterval(this.sendCommands, 1000);
 }
 
