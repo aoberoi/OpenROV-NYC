@@ -13,6 +13,7 @@ app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
+app.locals.pretty = true
 
 /*
  * Middleware
@@ -56,7 +57,7 @@ require('./routes')(app);
 /*
  * Socket handling
  */
-require('./lib/sockets.js')(socketServer);
+//require('./lib/sockets.js')(socketServer);
 
 
 /*

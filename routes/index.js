@@ -6,8 +6,8 @@ function index(req, res) {
   res.render('index', { title : 'Express', description: '' });
 }
 
-function control(req, res) {
-  res.render('control', {
+function robots(req, res) {
+  res.render('robots', {
     title: 'OpenROV Remote Control',
     description: '',
     socketHost: 'localhost',
@@ -22,7 +22,7 @@ function mockrov(req, res) {
 module.exports = function(app) {
   app.get('/', index);
 
-  app.get('/control', control);
+  app.get('/robots', robots);
 
   app.get('/mockrov', mockrov);
 
